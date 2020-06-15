@@ -1,24 +1,18 @@
 #include <iostream>
 #include "robot.hpp"
 using namespace std;
-
-int main(){
-	if (initClientRobot() !=0){
-		std::cout<<" Error initializing robot"<<std::endl;
-	}
-	int error = 0;
-	double proportion = 0.2;
+	int x = 0;
+    int y = 0;
+    int error = 0;
     double vLeft = 30.0;
     double vRight = 30.0;
-    int x = 0;
-    int y = 0;
-    int size = 150;
+	double proportion = 0.2;
+	
+    int findPix(){
+	    int size = 150;
     double values[size];
     double black [size];
-    //Sets up the code for taking a picture for the camera. The picture detects the white line which makes the robot follow the line
-    while(1){
-		takePicture();
-		for(int i = 0; i <150; i++){
+	  for(int i = 0; i <150; i++){
 			int pix = get_pixel(cameraView,50,i,3);
 			int isWhite = 0;
 		    int isBlack = 0;
@@ -45,9 +39,16 @@ int main(){
 		vLeft = 30.0;
 		vRight = 30.0;
         // if the error value is less than zero, & a white pixle is detected in front, turn left.
-          
-       
-          
+	  }
+	  
+int main(){
+	if (initClientRobot() !=0){
+		std::cout<<" Error initializing robot"<<std::endl;
+	}
+    //Sets up the code for taking a picture for the camera. The picture detects the white line which makes the robot follow the line
+    while(1){
+		takePicture();
+		findPix();
      	 if((error<0)&&((x<114) && (52<x)) && (error<0)){vRight = 60;} // If white Left And Front & right, turn right.
 	    // If neither white Left And Front & right, turn arround left.
 	    if(!((error<0)&&((x<114) && (52<x)) && (error<0))){
@@ -80,7 +81,11 @@ int main(){
 	  std::cout<<std::endl;
       setMotors(vLeft,vRight);   
       std::cout<<" vLeft="<<vLeft<<"  vRight="<<vRight<<std::endl;
-
-  } //while
+  }
+}
   
-} // main
+   //while
+  
+//} // main
+
+
