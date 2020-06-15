@@ -38,7 +38,6 @@ using namespace std;
 		std::cout<<error<<std::endl;
 		vLeft = 30.0;
 		vRight = 30.0;
-        // if the error value is less than zero, & a white pixle is detected in front, turn left.
 	  }
 	  
 int main(){
@@ -49,6 +48,7 @@ int main(){
     while(1){
 		takePicture();
 		findPix();
+		// if the error value is less than zero, & a white pixle is detected in front, turn left.
      	 if((error<0)&&((x<114) && (52<x)) && (error<0)){vRight = 60;} // If white Left And Front & right, turn right.
 	    // If neither white Left And Front & right, turn arround left.
 	    if(!((error<0)&&((x<114) && (52<x)) && (error<0))){
@@ -83,9 +83,3 @@ int main(){
       std::cout<<" vLeft="<<vLeft<<"  vRight="<<vRight<<std::endl;
   }
 }
-  
-   //while
-  
-//} // main
-
-
