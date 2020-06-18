@@ -26,7 +26,7 @@ using namespace std;
     double green[150];
     int redchecker = 0;
 	//for(int j = 0; j<100;j++){
-	  for(int i = 0; i <120; i++){
+	  for(int i = 0; i <150; i++){
 			int pix = get_pixel(cameraView,50,i,3);
 			int redPix = get_pixel(cameraView,50,60,0);
 			int greenPix = get_pixel(cameraView,50,i,1);
