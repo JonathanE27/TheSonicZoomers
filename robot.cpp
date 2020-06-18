@@ -69,7 +69,7 @@ using namespace std;
 			//cout<<values[i]<<std::endl; 
 		//std::cout<<isWhite<<" ";
 	   // std::cout<<isBlack<<" ";
-        y = std::distance(black, std::find(values, black + size, 1));		//cout<<x<<std::endl; //find black values
+        y = std::distance(black, std::find(black, black + size, 1));		//cout<<x<<std::endl; //find black values
         x = std::distance(values, std::find(values, values + size, 1));		//cout<<x<<std::endl; //find white values
 		r = std::distance(red, std::find(red, red + size, 1));	// //find white values
 	//	cout<<r<<std::endl;
@@ -154,13 +154,23 @@ using namespace std;
 
 			 } // If white Left And Front & right, turn right.
 			 else if((error == 0)||(error > 3000)){
-	       if(leftturn < 18.9){
+	       if(leftturn < 19){
 			   vRight=20; vLeft=20;
 			   leftturn++;
 			   error =0;
 			   }
 	
-	       else{vLeft = 0; vRight =150;
+	       else{
+			   for(int i = 0;i<5;i++){
+				    vLeft = 40; vRight =40;
+				   setMotors(vLeft,vRight);
+				   }
+			   vLeft = 0; vRight =300;//225.5;
+			   setMotors(vLeft,vRight);
+			   for(int i = 0;i<5;i++){
+				    vLeft = 40; vRight =40;
+				   setMotors(vLeft,vRight);
+				   }
 			  }
 	       //error = 1;
 			}  
