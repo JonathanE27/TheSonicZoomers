@@ -11,7 +11,7 @@ using namespace std;
     double vRight = 30.0;
 	double proportion = 0.2;
 	bool running = true;
-    
+    int choice;
 void findPix(){
 	int isRed = 0;
 	int isWhite = 0;
@@ -38,9 +38,9 @@ void findPix(){
 				error = error +(i-90);
 				} 
 			else {isWhite=0;}
-			if (pix == 0 && isRed == 0){ isBlack = 1;
+			
+			if (pix == 0 && isRed == 0 && choice == 2 || (pix==0 && choice == 1)){ isBlack = 1;
 				running = false;} 
-
 			else{isBlack = 0;}
 			values[i] = isWhite;
 			red[i] = isRed;
@@ -53,7 +53,7 @@ void findPix(){
 	  }
 
 void followLine(){
-	while(running ==true){
+	while(running){
 		//Sets up the code for taking a picture for the camera. The picture detects the white line which makes the robot follow the line
 		takePicture();
 
@@ -165,7 +165,6 @@ int main(){
 		std::cout<<" Error initializing robot"<<std::endl;
 	}
 	std::cout<<"Enter 1 for Core and Completion, Enter 2 for challenge: "<<std::endl;
-		int choice;
 		std::cin>>choice;
 		if(choice == 1){
 			followLine();
